@@ -1,5 +1,4 @@
-﻿  decompressor.cpp
-C:\Users\pseud\source\repos\Archivator\exam\decompressor.cpp(21,9): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+﻿  compressor.cpp
   exam.vcxproj -> C:\Users\pseud\source\repos\Archivator\x64\Debug\exam.exe
   "pwsh.exe" не является внутренней или внешней
   командой, исполняемой программой или пакетным файлом.
