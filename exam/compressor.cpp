@@ -9,11 +9,11 @@ namespace fs = boost::filesystem;
 using namespace fs;
 using namespace std;
 
-void compress(const std::string& inputFile, const std::string& outputFile) {
-    std::ifstream in(inputFile, std::ios::binary);
-    std::ofstream out(outputFile, std::ios::binary);
+void Compressor::compressFile(const string& inputFile, const string& outputFile) {
+    ifstream in(inputFile, ::ios::binary);
+    ofstream out(outputFile, ios::binary);
     
-    std::string content((std::istreambuf_iterator<char>(in)), {});
+    string content((istreambuf_iterator<char>(in)), {});
     string output;
     map<string, vector<size_t>> duplicateIndex;
     vector<string> alreadyChecked = {};
@@ -65,13 +65,18 @@ void compress(const std::string& inputFile, const std::string& outputFile) {
     
 }
 
-void compress_folder(const string folderPath, const string& outputFile) {
-    ofstream out(outputFile, std::ios::binary);
+void Compressor::compressFolder(const string folderPath, const string& outputFile) {
+    ofstream out(outputFile, ios::binary);
+    map<string, vector<size_t>> duplicateIndex;
     for (recursive_directory_iterator it(folderPath), end; it != end; ++it) {
         if (is_regular_file(*it)) {
-            ifstream in(it->path().string(), std::ios::binary);
-            std::string content((istreambuf_iterator<char>(in)), {});
-			map<string, vector<size_t>> duplicateIndex;
+            ifstream in(it->path().string(), ios::binary);
+            string content((istreambuf_iterator<char>(in)), {});
+            if (!in) {
+                cerr << "Cannot open file: " << it->path() << endl;
+                continue;
+            }
+			
 			vector<string> alreadyChecked = {};
 			for (size_t i = 0; i < content.length(); i++) {
 				string currentChar(1, content[i]);
@@ -98,10 +103,21 @@ void compress_folder(const string folderPath, const string& outputFile) {
 			}
             
 
-
-
-            out << relative(it->path(), folderPath).string() << "\n";
+            string relPath = relative(it->path(), folderPath).string();
+            out << "FILE " << relPath << "\n";
             cout << content << "\n";
         }
     }
+    ofstream meta("meta.txt");
+
+    for (const auto& pair : duplicateIndex) {
+        meta << pair.first << " ";
+        meta << pair.second.size();
+
+        for (size_t idx : pair.second) {
+            meta << " " << idx;
+        }
+        meta << endl;
+    }
+    meta.close();
 };

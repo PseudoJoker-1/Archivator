@@ -1,4 +1,8 @@
 #pragma once
 #include <string>
 
-void compress(const std::string& inputFile, const std::string& outputFile);
+class Compressor {
+public:
+	void compressFile(const std::string& inputFile, const std::string& outputFile);
+	void compressFolder(const std::string inputFolder, const std::string& outputFile);
+};
