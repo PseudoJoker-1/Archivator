@@ -8,7 +8,6 @@ int main() {
 	std::cout << "Compressing and decompressing 'asd' to test functionality." << std::endl;
     Compressor compressor;
     Decompressor decompressor;
-    compressor.compressFolder("asd", "compressed.txt");
-	decompressor.decompressFolder("compressed.txt", "asd");
+	decompressor.decompressFolder("meta.txt", "asdf");
     return 0;
 }

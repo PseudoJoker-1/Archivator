@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,13 +130,13 @@
   <ItemGroup>
     <ClCompile Include="compressor.cpp" />
     <ClCompile Include="decompressor.cpp" />
-    <ClCompile Include="file_utils.cpp" />
+    <ClCompile Include="Archivator.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="compressor.h" />
     <ClInclude Include="decompressor.h" />
-    <ClInclude Include="file_utils.h" />
+    <ClInclude Include="Archivator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
