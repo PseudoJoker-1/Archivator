@@ -11,7 +11,7 @@ void Archivator::saveToFile(const std::string& archiveFile) const {
     for (const auto& entry : entries) {
         out << "FILE " << entry.relativePath << "\n";
         out << entry.compressedData << "\n";
-        out << "\n"; // Разделитель между файлами
+        out << "\n"; 
     }
 }
 
@@ -24,7 +24,6 @@ void Archivator::loadFromFile(const std::string& archiveFile) {
             std::string relPath = line.substr(5);
             std::string data;
             std::getline(in, data);
-            // Пропускаем пустую строку-разделитель
             std::getline(in, line);
             entries.push_back({ relPath, data });
         }

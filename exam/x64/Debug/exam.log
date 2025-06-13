@@ -1,8 +1,4 @@
-﻿  compressor.cpp
-  Archivator.cpp
-  main.cpp
-C:\Users\pseud\source\repos\Archivator\exam\main.cpp(9,16): warning C4101: compressor: неиспользованная локальная переменная
-  Создание кода...
+﻿  main.cpp
   exam.vcxproj -> C:\Users\pseud\source\repos\Archivator\x64\Debug\exam.exe
   "pwsh.exe" не является внутренней или внешней
   командой, исполняемой программой или пакетным файлом.
